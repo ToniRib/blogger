@@ -9,6 +9,7 @@ class TagsController < ApplicationController
 
   def destroy
     Tag.find(params[:id]).destroy
+    Tagging.where(tag_id: params[:id]).destroy_all
 
     flash.notice = "Tag Deleted!"
 
